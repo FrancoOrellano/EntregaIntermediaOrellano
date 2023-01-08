@@ -39,7 +39,8 @@ BASE_APPS = [
     'django.contrib.staticfiles',
 ]
 MY_APPS = [
-    'clothes'
+    'clothes',
+    'orders',
 ]
 
 THIRD_APPS = [

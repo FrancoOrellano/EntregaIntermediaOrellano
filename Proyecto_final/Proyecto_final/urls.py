@@ -23,4 +23,5 @@ urlpatterns = [
     path('', index, name='index'),
 
     path('clothes/', include('clothes.urls')),
+    path('orders/', include('orders.urls'))
 ]

@@ -4,7 +4,7 @@ from django.db import models
 
 class Clothes(models.Model):
     type = models.CharField(max_length=123)
-    price = models.FloatField
+    price = models.FloatField(default=0)
     stock = models.BooleanField(default=False)
 
     def __str__(self):
