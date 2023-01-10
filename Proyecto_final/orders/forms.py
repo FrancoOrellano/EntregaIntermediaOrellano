@@ -5,7 +5,6 @@ class OrderForm(forms.Form):
     ('Cash', 'Cash'),
     ('Card', 'Card'),
 )
-    client = forms.CharField(max_length=123)
-    garment = forms.CharField(max_length=123)
-    creation_time = forms.DateTimeField()
-    payment_method = forms.CharField(max_length=4)
+    client = forms.CharField(max_length=123, label = 'Cliente')
+    garment = forms.CharField(max_length=123, label = 'Prenda')
+    payment_method = forms.CharField(max_length=4, label = 'Metodo de pago (Card/Cash)')
