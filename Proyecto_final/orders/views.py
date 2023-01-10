@@ -26,8 +26,8 @@ def create_order(request):
             Order.objects.create(
                 client=form.cleaned_data['client'],
                 garment=form.cleaned_data['garment'],
-                creation_time=form.cleaned_data['creation time'],
-                payment_method=form.cleaned_data['payment method'],
+                creation_time=form.data.get,
+                payment_method=form.cleaned_data,
             )
             context = {
                 'message': 'Orden añadida exitosamente'

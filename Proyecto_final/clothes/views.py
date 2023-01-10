@@ -36,7 +36,7 @@ def create_garment(request):
 def list_clothes(request):
     if 'search' in request.GET:
         search = request.GET['search']
-        clothes = Clothes.objects.filter(name__icontains=search)
+        clothes = Clothes.objects.filter(type__icontains=search)
     else:
         clothes = Clothes.objects.all()
     context= {
@@ -53,4 +53,4 @@ def list_categories(request):
     context = {
         'categories':all_categories
     }
-    return render(request, 'clothes/list_categories.html', context=context)
+    return render(request, 'categories/list_categories.html', context=context)
