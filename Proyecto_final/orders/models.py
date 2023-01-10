@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Order(models.Model):
+    class Meta:
+        verbose_name_plural = 'Orders'
     CHOICES = (
         ('Cash', 'Cash'),
         ('Card', 'Card'),
