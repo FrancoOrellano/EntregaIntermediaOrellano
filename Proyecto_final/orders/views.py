@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from orders.models import Order
 from orders.forms import OrderForm
 
@@ -43,3 +44,42 @@ def create_order(request):
                 'form': OrderForm()
             }
             return render(request, 'orders/create_order.html', context=context)
+
+def update_order(request, pk):
+    provider = Order.objects.get(id=pk)
+
+    if request.method == 'GET':
+        context = {
+            'form': OrderForm(
+                initial={
+                    'client':provider.client,
+                    'garment':provider.garment,
+                    'payment_method':provider.payment_method,
+                }
+            )
+        }
+
+        return render(request, 'orders/update_order.html', context=context)
+
+    elif request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            provider.client = form.cleaned_data['client']
+            provider.garment = form.cleaned_data['garment']
+            provider.payment_method = form.cleaned_data['payment_method']
+            provider.save()
+            
+            context = {
+                'message': 'Orden actualizada'
+            }
+        else:
+            context = {
+                'form_errors': form.errors,
+                'form': OrderForm()
+            }
+        return render(request, 'orders/update_order.html', context=context)
+
+class OrderDeleteView(DeleteView):
+    model = Order
+    template_name = 'orders/delete_order.html'
+    success_url = '/orders/list-orders/'

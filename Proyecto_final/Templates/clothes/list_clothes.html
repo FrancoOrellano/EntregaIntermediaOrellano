@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <h1>Hola desde el template de listado de prendas</h1>
+    <h1>Listado de prendas</h1>
     <h2>Añadir nueva prenda </h2> <a href="/clothes/create-garment/" class="btn btn-primary">Añadir</a>
     {% for cloth in clothes %}
 
@@ -28,7 +28,8 @@
             {% else %}
                 <p>Sin stock</p>
             {% endif %}
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <a href="/clothes/update-garment/{{cloth.id}}/" class="btn btn-primary">Actualizar</a>
+            <a href="/clothes/delete-garment/{{cloth.id}}/" class="btn btn-danger">Eliminar</a>
             </div>
         </div>
 

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirmacion de borrado
+{% endblock %}
+
+{% block content %}
+
+    <h2>Orden a cancelar: {{object.garment}}</h2>
+    <p>Seguro que desea cancelar su orden?</p>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="CANCELAR" class="btn btn-danger">
+    </form>
+
+
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-lg-0" action="/orders/list-orders/" method="GET">
+{% endblock %}

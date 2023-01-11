@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirmacion de borrado
+{% endblock %}
+
+{% block content %}
+
+    <h2>Se elminará la categoría {{object.name}}</h2>
+    <p>Seguro que desea elminar {{object.name}}?</p>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="ELIMINAR" class="btn btn-danger">
+    </form>
+
+
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-lg-0" action="/clothes/list-categories/" method="GET">
+{% endblock %}

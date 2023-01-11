@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Creacion de Ordenes
+    Actualización de categorias
 {% endblock %}
 
 {% block content %}
-    <h1>Creación de Ordenes</h1>
+    <h1>Actualizar categoria</h1>
 
 
 
@@ -20,7 +20,7 @@
             </table>
 
 
-            <input type="submit" value="Hacer orden">
+            <input type="submit" value="Actualizar">
         </form>
     {% endif %}
 
@@ -35,11 +35,8 @@
         <h2 style="color: green;" >{{message}}</h2>
     {% endif %}
 
-
-
-
-
 {% endblock %}
+
 {% block search %}
-<form class="form-inline my-2 my-lg-0" action="orders/list-orders" method="GET">
+<form class="form-inline my-2 my-lg-0" action="/clothes/list-categories" method="GET">
 {% endblock %}

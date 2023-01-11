@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Listar ordenes
+    Listado de ordenes
 {% endblock %}
 
 {% block content %}
 
-<h1>Hola desde el template de listado de ordenes</h1>
+<h1>Listado de ordenes</h1>
 <h2>Hacer una orden </h2> <a href="/orders/create-order/" class="btn btn-primary">Ordenar</a>
 {% for order in orders %}
     <div class="card" style="width: 18rem;">
@@ -14,8 +14,13 @@
         <div class="card-body">
         <h5 class="card-title">El cliente: {{order.client}}</h5>
         <p class="card-text">Compro la prenda {{order.garment}} el {{order.creation_time}}</p>
-        <p>El pago se realizo con {{order.payment_method}}</p>
-        <a href="#" class="btn btn-primary">Ver detalle</a>
+        {% if order.payment_method == 'Card' %}
+        <p>El pago se realizo con tarjeta</p>
+        {% elif order.payment_method == 'Cash' %}
+        <p>El pago se realizo con efectivo</p>
+        {% endif %}
+        <a href="/orders/update-order/{{order.id}}/" class="btn btn-primary">Actualizar</a>
+        <a href="/orders/delete-order/{{order.id}}/" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
 {% endfor %}
