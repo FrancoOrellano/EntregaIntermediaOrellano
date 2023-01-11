@@ -8,18 +8,24 @@ class Clothes(models.Model):
     ('woman', 'Mujer'),
     ('unisex', 'Unisex'),
 )
+    CATEGORIES = (
+        ('jumpers', 'Buzos'),
+        ('shirts', 'Remeras'),
+        ('caps', 'Gorras'),
+    )
     class Meta:
-        verbose_name_plural = 'Clothes'
-    type = models.CharField(max_length=123, verbose_name= 'Tipo de prenda')
+        verbose_name_plural = 'Prendas'
+    type = models.CharField(max_length=123, verbose_name= 'Prenda')
     price = models.FloatField(default=0, verbose_name= 'Precio')
     stock = models.BooleanField(default=False, verbose_name= 'Existencias')
-    sex = models.CharField(choices = CHOICES,max_length= 6, default= 'unisex', verbose_name = 'Sexo')
+    sex = models.CharField(choices = CHOICES, max_length= 6, default= 'unisex', verbose_name = 'Sexo')
+    category = models.CharField(choices = CATEGORIES, max_length= 7, default= 'shirts', verbose_name= 'Categoría')
 
     def __str__(self):
         return self.type
 
 class Category(models.Model):
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = 'Categorias'
     name = models.CharField(max_length=123, unique=True, verbose_name= 'Nombre')
     description = models.CharField(max_length=123, default= 'Sin descripción', verbose_name= 'Descripción')

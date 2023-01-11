@@ -5,7 +5,7 @@ from clothes.models import Clothes, Category
 
 @admin.register(Clothes)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('type', 'price', 'stock', 'sex')
+    list_display = ('type', 'price', 'stock', 'sex', 'category')
     list_filter = ('stock',)
     search_fields = ('name',)
 

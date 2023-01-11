@@ -23,6 +23,7 @@ def create_garment(request):
                 price=form.cleaned_data['price'],
                 stock=form.cleaned_data['stock'],
                 sex=form.cleaned_data['sex'],
+                category=form.cleaned_data['category'],
             )
             context = {
                 'message': 'Prenda añadida exitosamente'
@@ -47,16 +48,17 @@ def list_clothes(request):
     return render(request, 'clothes/list_clothes.html', context=context)
 
 def update_garment(request, pk):
-    provider = Clothes.objects.get(id=pk)
+    garment = Clothes.objects.get(id=pk)
 
     if request.method == 'GET':
         context = {
             'form': ClothesForm(
                 initial={
-                    'type':provider.type,
-                    'price':provider.price,
-                    'stock':provider.stock,
-                    'sex':provider.sex,
+                    'type':garment.type,
+                    'price':garment.price,
+                    'stock':garment.stock,
+                    'sex':garment.sex,
+                    'category':garment.category,
                 }
             )
         }
@@ -66,11 +68,12 @@ def update_garment(request, pk):
     elif request.method == 'POST':
         form = ClothesForm(request.POST)
         if form.is_valid():
-            provider.type = form.cleaned_data['type']
-            provider.price = form.cleaned_data['price']
-            provider.stock = form.cleaned_data['stock']
-            provider.sex = form.cleaned_data['sex']
-            provider.save()
+            garment.type = form.cleaned_data['type']
+            garment.price = form.cleaned_data['price']
+            garment.stock = form.cleaned_data['stock']
+            garment.sex = form.cleaned_data['sex']
+            garment.category = form.cleaned_data['category']
+            garment.save()
             
             context = {
                 'message': 'Prenda actualizada'

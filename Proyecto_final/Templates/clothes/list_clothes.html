@@ -23,10 +23,19 @@
             {% else %}
             <p>Unisex</p>
             {% endif %}
+
             {% if cloth.stock == True %}
                 <p>Disponible</p>
             {% else %}
                 <p>Sin stock</p>
+            {% endif %}
+
+            {% if cloth.category == 'jumpers' %}
+            <p>Buzo</p>
+            {% elif cloth.category == 'shirts' %}
+            <p>Remera</p>
+            {% elif cloth.category == 'caps' %}
+            <p>Gorra - Gorro</p>
             {% endif %}
             <a href="/clothes/update-garment/{{cloth.id}}/" class="btn btn-primary">Actualizar</a>
             <a href="/clothes/delete-garment/{{cloth.id}}/" class="btn btn-danger">Eliminar</a>
