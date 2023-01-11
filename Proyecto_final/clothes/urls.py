@@ -7,6 +7,6 @@ urlpatterns = [
     path('create-garment/', create_garment),
     path('list-clothes/', list_clothes),
 
-    path('create-category/<str:name>/', create_category),
+    path('create-category/', create_category),
     path('list-categories/', list_categories),
 ]

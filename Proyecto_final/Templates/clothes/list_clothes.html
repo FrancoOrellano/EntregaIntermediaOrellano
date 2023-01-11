@@ -16,6 +16,13 @@
             <div class="card-body">
             <h5 class="card-title">{{cloth.type}}</h5>
             <p class="card-text">Su precio es ${{cloth.price}}</p>
+            {% if cloth.sex == 'man' %}
+            <p>Hombre</p>
+            {% elif cloth.sex == 'woman' %}
+            <p>Mujer</p>
+            {% else %}
+            <p>Unisex</p>
+            {% endif %}
             {% if cloth.stock == True %}
                 <p>Disponible</p>
             {% else %}

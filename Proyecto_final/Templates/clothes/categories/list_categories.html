@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de categorías
+{% endblock %}
+
+{% block content %}
+
+    <h1>Listado de categorias</h1>
+    <h2>Añadir nueva categoria </h2> <a href="/clothes/create-category/" class="btn btn-primary">Añadir</a>
+    {% for category in categories %}
+
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{category.name}}</h5>
+            <p class="card-text">{{category.description}}</p>
+            <a href="/clothes/list-clothes/?search={{category.name}}" class="btn btn-primary">Buscar</a>
+            </div>
+        </div>
+
+
+
+    {% endfor %}
+
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-lg-0" action="/clothes/list-clothes/" method="GET">
+{% endblock %}
