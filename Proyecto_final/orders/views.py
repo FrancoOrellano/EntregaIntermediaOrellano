@@ -6,9 +6,13 @@ from orders.forms import OrderForm
 from orders.models import Order
 # Create your views here.
 def list_orders(request):
-    orders = Order.objects.all()
-    context = {
-        'orders': orders,
+    if 'search' in request.GET:
+        search = request.GET['search']
+        orders = Order.objects.filter(garment__icontains=search)
+    else:
+        orders = Order.objects.all()
+    context= {
+        'orders':orders,
     }
     return render(request, 'orders/list_orders.html', context=context)
 
@@ -27,7 +31,7 @@ def create_order(request):
                 client=form.cleaned_data['client'],
                 garment=form.cleaned_data['garment'],
                 creation_time=form.data.get,
-                payment_method=form.cleaned_data,
+                payment_method=form.cleaned_data['payment_method'],
             )
             context = {
                 'message': 'Orden añadida exitosamente'
