@@ -4,3 +4,5 @@ Todas las paginas son accesibles a travéz de la navbar, las ordenes, categoría
 Superuser
 Username: adminadmin
 Password: admin123
+
+Proyecto de una sola persona, Franco Orellano
