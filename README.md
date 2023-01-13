@@ -6,3 +6,5 @@ Username: adminadmin
 Password: admin123
 
 Proyecto de una sola persona, Franco Orellano
+
+Se requiere instalar tzdata
