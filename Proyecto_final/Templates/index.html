@@ -6,6 +6,16 @@
 
 {% block content %}
     <h1>Indice de la pagina</h1>
+
+    {% if message %}
+        <h2>{{message}}</h2>
+    {% else %}
+    {{request.user}}
+
+    {{request.user.profile.phone}}
+    {% endif %}
+
+
 {% endblock %}
 
 {% block search %}

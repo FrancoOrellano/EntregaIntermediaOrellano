@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Proyecto_final.views import index
+from django.conf.urls.static import static
+from Proyecto_final.settings import MEDIA_ROOT, MEDIA_URL
 # from Proyecto_final.views import
 
 urlpatterns = [
@@ -23,5 +25,6 @@ urlpatterns = [
     path('', index, name='index'),
 
     path('clothes/', include('clothes.urls')),
-    path('orders/', include('orders.urls'))
-]
+    path('orders/', include('orders.urls')),
+    path('users/', include('users.urls')),
+] + static(MEDIA_URL, document_root = MEDIA_ROOT)
