@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DeleteView, UpdateView, ListView, CreateView
@@ -7,7 +8,7 @@ from clothes.models import Clothes, Category
 from clothes.forms import ClothesForm, CategoryForm
 
 # Create your views here.
-
+@login_required
 def create_garment(request):
     if request.method == 'GET':
         context = {
@@ -117,6 +118,7 @@ def create_category(request):
             }
             return render(request, 'clothes/categories/create_category.html', context=context)
 
+@login_required
 def list_categories(request):
     if 'search' in request.GET:
         search = request.GET['search']

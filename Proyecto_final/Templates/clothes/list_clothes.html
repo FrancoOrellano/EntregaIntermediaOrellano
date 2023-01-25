@@ -7,7 +7,11 @@
 {% block content %}
 
     <h1>Listado de prendas</h1>
-    <h2>Añadir nueva prenda </h2> <a href="/clothes/create-garment/" class="btn btn-primary">Añadir</a>
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <h2>Añadir nueva prenda </h2> <a href="/clothes/create-garment/" class="btn btn-primary">Añadir</a>
+        {% endif %}
+    {% endif %}
     {% for cloth in clothes %}
 
 
@@ -37,8 +41,13 @@
             {% elif cloth.category == 'caps' %}
             <p>Gorra - Gorro</p>
             {% endif %}
-            <a href="/clothes/update-garment/{{cloth.id}}/" class="btn btn-primary">Actualizar</a>
-            <a href="/clothes/delete-garment/{{cloth.id}}/" class="btn btn-danger">Eliminar</a>
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <a href="/clothes/update-garment/{{cloth.id}}/" class="btn btn-primary">Actualizar</a>
+                <a href="/clothes/delete-garment/{{cloth.id}}/" class="btn btn-danger">Eliminar</a>
+                {% endif %}
+            <a href="/orders/create-order/" class="btn btn-primary">Comprar</a>
+            {% endif %}
             </div>
         </div>
 
