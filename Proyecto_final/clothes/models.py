@@ -9,9 +9,9 @@ class Clothes(models.Model):
     ('unisex', 'Unisex'),
 )
     CATEGORIES = (
-        ('jumpers', 'Buzos'),
-        ('shirts', 'Remeras'),
-        ('caps', 'Gorras'),
+        ('Buzos', 'Buzos'),
+        ('Remeras', 'Remeras'),
+        ('Gorras', 'Gorras'),
     )
     class Meta:
         verbose_name_plural = 'Prendas'

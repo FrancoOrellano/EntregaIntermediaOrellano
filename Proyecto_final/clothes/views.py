@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DeleteView, UpdateView, ListView, CreateView
+from django.db.models import Q
 
 from clothes.models import Clothes, Category
 from clothes.forms import ClothesForm, CategoryForm
@@ -39,7 +40,7 @@ def create_garment(request):
 def list_clothes(request):
     if 'search' in request.GET:
         search = request.GET['search']
-        clothes = Clothes.objects.filter(type__icontains=search)
+        clothes = Clothes.objects.filter(Q(type__icontains=search) | Q(category__contains=search,))
     else:
         clothes = Clothes.objects.all()
     context= {

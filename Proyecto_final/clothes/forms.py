@@ -7,9 +7,9 @@ class ClothesForm(forms.Form):
     ('unisex', 'Unisex'),
 )
     CATEGORIES = (
-        ('jumpers', 'Buzos'),
-        ('shirts', 'Remeras'),
-        ('caps', 'Gorras'),
+        ('Buzos', 'Buzos'),
+        ('Remeras', 'Remeras'),
+        ('Gorras', 'Gorras'),
     )
 
     type = forms.CharField(max_length=123, label = 'Tipo de prenda')

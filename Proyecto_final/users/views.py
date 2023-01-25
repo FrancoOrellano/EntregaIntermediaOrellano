@@ -95,7 +95,7 @@ def update_user_profile(request):
         form = UserProfileForm(initial={
             'phone':request.user.profile.phone,
             'birth_date':request.user.profile.birth_date,
-            'profile_picture':request.user.profile.profile_picture
+            'profile_picture':request.user.profile.profile_picture,
         })
         context ={
             'form':form
