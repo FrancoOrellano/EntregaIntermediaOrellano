@@ -19,7 +19,7 @@ def create_garment(request):
         return render(request, 'clothes/create_garment.html', context=context)
 
     elif request.method == 'POST':
-        form = ClothesForm(request.POST)
+        form = ClothesForm(request.POST, request.FILES)
         if form.is_valid():
             Clothes.objects.create(
                 type=form.cleaned_data['type'],
@@ -27,6 +27,8 @@ def create_garment(request):
                 stock=form.cleaned_data['stock'],
                 sex=form.cleaned_data['sex'],
                 category=form.cleaned_data['category'],
+                garment_image=form.cleaned_data['garment_image'],
+                size=form.cleaned_data['size'],
             )
             context = {
                 'message': 'Prenda añadida exitosamente'
@@ -72,7 +74,7 @@ def update_garment(request, pk):
         return render(request, 'clothes/update_garment.html', context=context)
 
     elif request.method == 'POST':
-        form = ClothesForm(request.POST)
+        form = ClothesForm(request.POST, request.FILES)
         if form.is_valid():
             garment.type = form.cleaned_data['type']
             garment.price = form.cleaned_data['price']
@@ -126,7 +128,7 @@ def create_category(request):
             }
             return render(request, 'clothes/categories/create_category.html', context=context)
 
-@login_required
+
 def list_categories(request):
     if 'search' in request.GET:
         search = request.GET['search']
