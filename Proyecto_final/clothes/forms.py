@@ -17,6 +17,8 @@ class ClothesForm(forms.Form):
     stock = forms.BooleanField(required=False, label = 'Disponibilidad (stock)')
     sex = forms.ChoiceField(choices = CHOICES, label = 'Sexo')
     category = forms.ChoiceField(choices = CATEGORIES, label= 'Categoría')
+    garment_image = forms.ImageField()
+    size = forms.CharField(max_length=123, label= 'Talles')
 
 
 class CategoryForm(forms.Form):

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% endblock %}
+
+{% block title %}
+    About me
+{% endblock %}
+
+{% block content %}
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<div class="aboutus-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="aboutus">
+                        <h2 class="aboutus-title">Sobre mi</h2>
+                        <p class="aboutus-text">Mi nombre es Franco Orellano, soy un chico de 17 años actualmente que aspira a varios titulos en un futuro, actualmente estudio en un colegio tecnico en la orientación de Electromecanica y me preparo para el First Certificate.</p>
+                        <p class="aboutus-text">Desde chico me interesó la programación ya que siempre fui fanatico de los videojuegos y los encontré como refugio a todos mis problemas, lo que actualmente se convirtió en grandes amigos y buenos momentos. El curso lo tomo como inicio ya que mi hermano me dio la oportunidad de abrirme a este mundo y espero poder seguir y especializarme en Ciberseguridad en un futuro</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="aboutus-banner">
+                        <img src="https://i.ibb.co/RYSVChq/Screenshot-20220103-180902-2.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="feature">
+                        <div class="feature-box">
+                            <div class="clearfix">
+                                <div class="iconset">
+                                    <span class="glyphicon glyphicon-cog icon"></span>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Metas</h4>
+                                    <p>Aprobar este final, poder estudiar mas cuando el colegio me lo permita y especializarme en Ciberseguridad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="clearfix">
+                                <div class="iconset">
+                                    <span class="glyphicon glyphicon-cog icon"></span>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Motivos</h4>
+                                    <p>Siempre me interesó la programación y ademas de ser un trabajo bien pago es un mundo en el que uno nunca deja de aprender y siempre va para mas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="clearfix">
+                                <div class="iconset">
+                                    <span class="glyphicon glyphicon-cog icon"></span>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Por que trabajar?</h4>
+                                    <p>Principalmente el poder ayudar a mi madre y darle algun gustito ya que desde que mi padre falleció en 2019 no hemos tenido muchas oportunidades economicas ya que el era los unicos ingresos de la casa, y tambien para poder crearme una econocmia a largo plazo y a corto plazo poder darme algun gustito (videojuegos, mejores componentes, etc).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-lg-0" action="/clothes/list-clothes/" method="GET">
+{% endblock %}

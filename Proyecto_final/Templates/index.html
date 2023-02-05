@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Index
+    Inicio | Ropa Cheta
 {% endblock %}
 
 {% block content %}
-    <h1>Indice de la pagina</h1>
 
     {% if message %}
         <h2>{{message}}</h2>
+    {% elif not request.user.is_authenticated %}
+    <h1>Bienvenid@ gracias por visitar nuestra tienda!</h1>
     {% else %}
-    {{request.user}}
+    <h1>Bienvenid@ {{request.user}}! Gracias por visitar nuestra tienda!</h1>
 
     {% endif %}
 

@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Proyecto_final.views import index
+from Proyecto_final.views import index, about_me
 from django.conf.urls.static import static
 from Proyecto_final.settings import MEDIA_ROOT, MEDIA_URL
-# from Proyecto_final.views import
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('about', about_me, name='about_me'),
 
     path('clothes/', include('clothes.urls')),
     path('orders/', include('orders.urls')),

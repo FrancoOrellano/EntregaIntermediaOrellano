@@ -20,6 +20,8 @@ class Clothes(models.Model):
     stock = models.BooleanField(default=False, verbose_name= 'Existencias')
     sex = models.CharField(choices = CHOICES, max_length= 6, default= 'unisex', verbose_name = 'Sexo')
     category = models.CharField(choices = CATEGORIES, max_length= 7, default= 'shirts', verbose_name= 'Categoría')
+    garment_image = models.ImageField(upload_to='products_img', null=True, blank=True)
+    size = models.CharField(max_length=123, verbose_name= 'Talles')
 
     def __str__(self):
         return self.type

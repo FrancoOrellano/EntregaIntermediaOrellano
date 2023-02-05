@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% block head %}  {% endblock %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,10 @@
 </head>
 
 <body>
+    <p style="background-image: url('https://i.ibb.co/hmWLZ6V/Captura-de-pantalla-2023-02-04-213633-removebg-preview.png');">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Inicio</a>
+            <a class="navbar-brand" href="/"><img src="https://i.ibb.co/hmWLZ6V/Captura-de-pantalla-2023-02-04-213633-removebg-preview.png" alt="Ropa Cheta" width="150" height="45" ></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,25 +23,29 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/clothes/list-clothes">Listado de prendas</a>
+                        <a class="nav-link" href="/clothes/list-clothes">Prendas</a>
                     </li>
                     {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/orders/list-orders">Listado de Ordenes</a>
+                            <a class="nav-link" href="/orders/list-orders">Ordenes</a>
                         </li>
                         {% endif %}
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/clothes/list-categories">Listado de Categorias</a>
+                        <a class="nav-link" href="/clothes/list-categories">Categorias</a>
                     </li>
-                    <li class="nav-item" style="margin-left: 100px;"></li>
+                    <li class="nav-item" style="margin-left: 200px;"></li>
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/users/logout/">Logout</a>
+                        <a class="nav-link" href="/users/logout/" 
+                        style="background-color:#434dd6; color: white; border: 0px; position: relative; top: 20%; right: 2%"
+                        role="button">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/users/update/profile/">Profile</a>
+                        <a class="nav-link" href="/users/update/profile/"
+                        style="background-color:#434dd6; color: white; border: 0px; position: relative; top: 20%; right: 2%"
+                        role='button'>Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/users/update/">{{request.user.username}}</a>
@@ -49,10 +55,14 @@
                         {% endif %}
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/users/login/">Login</a>
+                        <a class="nav-link" href="/users/login/"
+                        style="background-color:#434dd6; color: white; border: 0px; position: relative; top: 20%; right: 2%"
+                        role='button'>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/users/signup/">Signup</a>
+                        <a class="nav-link" href="/users/signup/" 
+                        style="background-color:#434dd6; color: white; border: 0px; position: relative; top: 20%; right: 2%"
+                        role='button'>Signup</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -68,7 +78,55 @@
 
     {% endblock %}
 
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 
+    </section>
+    <!-- Section: Social media -->
+    
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3 text-secondary"></i>Ropa Cheta
+                    </h6>
+                    <p>
+                        Somos una tienda de ropa comun y corriente, nada que ver aqui. Lorem ipsum
+                        dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p>
+                        <i class="fas fa-envelope me-3 text-secondary"></i>
+                        francooregeneral@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3 text-secondary"></i> + 11 2345 6788</p>
+                    <p><i class="fas fa-print me-3 text-secondary"></i> + 11 2345 6789</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+    
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+        © 2023 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">RopaCheta.com</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 </body>
 
 </html>

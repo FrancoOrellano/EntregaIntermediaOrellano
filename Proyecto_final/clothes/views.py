@@ -49,6 +49,7 @@ def list_clothes(request):
     }
     return render(request, 'clothes/list_clothes.html', context=context)
 
+@login_required
 def update_garment(request, pk):
     garment = Clothes.objects.get(id=pk)
 
@@ -61,6 +62,8 @@ def update_garment(request, pk):
                     'stock':garment.stock,
                     'sex':garment.sex,
                     'category':garment.category,
+                    'garment_image':garment.garment_image,
+                    'size':garment.size,
                 }
             )
         }
@@ -75,6 +78,8 @@ def update_garment(request, pk):
             garment.stock = form.cleaned_data['stock']
             garment.sex = form.cleaned_data['sex']
             garment.category = form.cleaned_data['category']
+            garment.garment_image = form.cleaned_data['garment_image']
+            garment.size = form.cleaned_data['size']
             garment.save()
             
             context = {
@@ -87,11 +92,13 @@ def update_garment(request, pk):
             }
         return render(request, 'clothes/update_garment.html', context=context)
 
+
 class GarmentDeleteView(DeleteView):
     model = Clothes
     template_name = 'clothes/delete_garment.html'
     success_url = '/clothes/list-clothes/'
 
+@login_required
 def create_category(request):
     if request.method == 'GET':
         context = {
@@ -130,6 +137,7 @@ def list_categories(request):
     }
     return render(request, 'clothes/categories/list_categories.html', context=context)
 
+@login_required
 def update_category(request, pk):
     provider = Category.objects.get(id=pk)
 
@@ -161,6 +169,7 @@ def update_category(request, pk):
                 'form': CategoryForm()
             }
         return render(request, 'clothes/categories/update_category.html', context=context)
+
 
 class CategoryDeleteView(DeleteView):
     model = Category

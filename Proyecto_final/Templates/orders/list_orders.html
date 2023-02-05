@@ -9,8 +9,7 @@
 <h1>Listado de ordenes</h1>
 <h2>Hacer una orden </h2> <a href="/orders/create-order/" class="btn btn-primary">Ordenar</a>
 {% for order in orders %}
-    <div class="card" style="width: 18rem;">
-        <img src="https://www.segutecnica.com/images/000000000001757037365remera-naranja-segutecnica.png" class="card-img-top">
+    <div class="card" style="width: 18rem; justify-content: center; left: 450px; width: 400px;">
         <div class="card-body">
         <h5 class="card-title">El cliente: {{order.client}}</h5>
         <p class="card-text">Compro la prenda {{order.garment}} el {{order.creation_time}}</p>
