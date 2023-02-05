@@ -7,7 +7,11 @@
 {% block content %}
 
     <h1>Listado de categorias</h1>
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
     <h2>Añadir nueva categoria </h2> <a href="/clothes/create-category/" class="btn btn-primary">Añadir</a>
+    {% endif %}
+    {% endif %}
     {% for category in categories %}
 
 
@@ -16,8 +20,12 @@
             <h5 class="card-title">{{category.name}}</h5>
             <p class="card-text">{{category.description}}</p>
             <a href="/clothes/list-clothes/?search={{category.name}}" class="btn btn-primary">Buscar</a>
+            {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
             <a href="/clothes/update-category/{{category.id}}/" class="btn btn-primary">Actualizar</a>
             <a href="/clothes/delete-category/{{category.id}}/" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+            {% endif %}
             </div>
         </div>
 
@@ -29,4 +37,6 @@
 
 {% block search %}
 <form class="form-inline my-2 my-lg-0" action="/clothes/list-categories/" method="GET">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar categoria" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 {% endblock %}

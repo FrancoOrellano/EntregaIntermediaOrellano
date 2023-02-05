@@ -89,6 +89,7 @@ def update_user(request):
         }
         return render(request, 'users/update_user.html', context=context)
 
+@login_required
 def update_user_profile(request):
     user = request.user
     if request.method == 'GET':

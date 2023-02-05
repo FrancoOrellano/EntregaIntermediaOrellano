@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from orders.models import Order
@@ -6,6 +8,7 @@ from orders.forms import OrderForm
 
 from orders.models import Order
 # Create your views here.
+@user_passes_test(lambda u: u.is_superuser)
 def list_orders(request):
     if 'search' in request.GET:
         search = request.GET['search']
@@ -17,6 +20,7 @@ def list_orders(request):
     }
     return render(request, 'orders/list_orders.html', context=context)
 
+@user_passes_test(lambda u: u.is_superuser)
 def create_order(request):
     if request.method == 'GET':
         context = {
@@ -45,6 +49,7 @@ def create_order(request):
             }
             return render(request, 'orders/create_order.html', context=context)
 
+@user_passes_test(lambda u: u.is_superuser)
 def update_order(request, pk):
     provider = Order.objects.get(id=pk)
 
@@ -79,6 +84,7 @@ def update_order(request, pk):
             }
         return render(request, 'orders/update_order.html', context=context)
 
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
 class OrderDeleteView(DeleteView):
     model = Order
     template_name = 'orders/delete_order.html'

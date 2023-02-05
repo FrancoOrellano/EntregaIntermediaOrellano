@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -9,7 +9,7 @@ from clothes.models import Clothes, Category
 from clothes.forms import ClothesForm, CategoryForm
 
 # Create your views here.
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def create_garment(request):
     if request.method == 'GET':
         context = {
@@ -52,7 +52,7 @@ def list_clothes(request):
     }
     return render(request, 'clothes/list_clothes.html', context=context)
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def update_garment(request, pk):
     garment = Clothes.objects.get(id=pk)
 
@@ -95,13 +95,13 @@ def update_garment(request, pk):
             }
         return render(request, 'clothes/update_garment.html', context=context)
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
 class GarmentDeleteView(DeleteView):
     model = Clothes
     template_name = 'clothes/delete_garment.html'
     success_url = '/clothes/list-clothes/'
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def create_category(request):
     if request.method == 'GET':
         context = {
@@ -140,7 +140,7 @@ def list_categories(request):
     }
     return render(request, 'clothes/categories/list_categories.html', context=context)
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def update_category(request, pk):
     provider = Category.objects.get(id=pk)
 
@@ -173,7 +173,7 @@ def update_category(request, pk):
             }
         return render(request, 'clothes/categories/update_category.html', context=context)
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'clothes/categories/delete_category.html'
