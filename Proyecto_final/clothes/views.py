@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DeleteView, UpdateView, ListView, CreateView
@@ -92,7 +93,7 @@ def update_garment(request, pk):
             }
         return render(request, 'clothes/update_garment.html', context=context)
 
-
+@method_decorator(login_required, name='dispatch')
 class GarmentDeleteView(DeleteView):
     model = Clothes
     template_name = 'clothes/delete_garment.html'
@@ -170,7 +171,7 @@ def update_category(request, pk):
             }
         return render(request, 'clothes/categories/update_category.html', context=context)
 
-
+@method_decorator(login_required, name='dispatch')
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'clothes/categories/delete_category.html'
