@@ -20,7 +20,6 @@ def list_orders(request):
     }
     return render(request, 'orders/list_orders.html', context=context)
 
-@user_passes_test(lambda u: u.is_superuser)
 def create_order(request):
     if request.method == 'GET':
         context = {
