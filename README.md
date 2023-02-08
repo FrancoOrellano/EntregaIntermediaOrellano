@@ -1,6 +1,8 @@
 # EntregaFinalOrellano
 Todas las paginas son accesibles a travéz de la navbar, las ordenes, categorías y prendas incluyen formulario de creación, listado con busqueda y creación y actualización de items.
 
+Video de la review: https://youtu.be/rIFUvb6Bxlg
+
 Superuser
 Username: adminadmin
 Password: admin123
